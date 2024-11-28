@@ -1,5 +1,6 @@
+draft.md
+.jekyll-cache/
 _site
-.DS_Store
 .jekyll
 .jekyll-metadata
 .bundle

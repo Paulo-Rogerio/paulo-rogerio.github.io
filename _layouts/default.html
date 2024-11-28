@@ -1,51 +1,72 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
 
     {% include meta.html %}
+    
+    <script data-goatcounter="https://d85dbedf-c6cc-4624-bcbe-eab483a2be4d.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <link  href= "{{"lite-yt-embed/lite-yt-embed.css" | relative_url }}" rel="stylesheet">
+    <script src= "{{"lite-yt-embed/lite-yt-embed.js" | relative_url}}" defer></script>
+    <link  href= "{{"bootstrap/css/bootstrap.min.css" | relative_url }}" rel="stylesheet">
+    <script src= "{{"jquery/jquery-3.2.1.slim.min.js" | relative_url}}" defer></script>
+    <script src= "{{"popperjs/popper.min.js" | relative_url}}" defer></script>
+    <script src= "{{"bootstrap/js/bootstrap.bundle.min.js" | relative_url}}" defer></script>
+    {% include jekyll_vars.html %}
+    <script src= "{{"js/bibtex.js" | relative_url}}" defer></script>
+    <script src= "{{"js/goatcounter.js" | relative_url}}" defer></script>
+    <script src= "{{"js/readingTime.js" | relative_url}}" defer></script>
+    <script src= "{{"js/codeCopy.js" | relative_url}}" defer></script>
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link href="{{"css/index.css" | relative_url}}" rel="stylesheet">
+    <link href="{{"css/blog.css" | relative_url}}" rel="stylesheet">
+    <link href="{{"css/post.css" | relative_url}}" rel="stylesheet">
+    <link href="{{"css/author.css" | relative_url}}" rel="stylesheet">
+    <link href="{{"css/syntax.css" | relative_url}}" rel="stylesheet">
+    
+    {% if page.katex %}
+        <!-- KaTeX -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+        <!-- The loading of KaTeX is deferred to speed up page rendering -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
 
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-  </head>
+        <!-- To automatically render math in text elements, include the auto-render extension: -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    {% endif %}
 
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
+    <link href="{{"fonts/open-sans.css" | relative_url}}" rel="stylesheet" type="text/css">
+    <link href="{{"fonts/lato.css" | relative_url}}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="{{"images/favicon.png" | relative_url}}"/>
 
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
+    <!-- default target -->
+</head>
+<body>
+    <div class="container-fluid">
+        
+        {% include navbar.html %}
+        
+        <main role="main" class="blogMain">
+            <article itemscope itemtype="https://schema.org/Article">
+                <!-- content -->
+                <div class="row default-banner" style="height: fit-content;">
+                    <h1 class="align-self-center text-uppercase"> {{ page.title }} </h1>
+                </div>
+                
+                <div class="row" style="height: auto; min-height: 100vh;">
+                    
+                    {{ content }}
+        
+                </div>
+            </article>
+        </main>
 
-          <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-          </nav>
-        </header>
-      </div>
+        {% include footer.html %}
+        
     </div>
-
-    <div id="main" role="main" class="container">
-      {{ content }}
-    </div>
-
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
-
-    {% include analytics.html %}
-  </body>
+</body>
 </html>

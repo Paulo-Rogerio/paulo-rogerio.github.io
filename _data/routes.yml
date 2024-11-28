@@ -1,0 +1,5 @@
+- label: Home
+  route: /
+
+- label: Articles
+  route: /articles
