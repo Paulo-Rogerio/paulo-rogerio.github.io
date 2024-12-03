@@ -1,5 +1,7 @@
 ---
 layout: post
+collection: aws
+permalink: /aws/pfsense-routing-subnets
 title:  "AWS Pfsense Router Subnets"
 author: Paulo Rogério
 date:   2024-11-28 20:50:00 -0300
@@ -71,7 +73,7 @@ A própria **AWS** forcesse um serviço de Túnel VPN entre as VPC, porém isso 
 
 Teremos **2 VPC** na mesma região, cada qual com sua respectiva faixa de IP. O desenho abaixo ilustrará melhor o papel do Pfsense.
 
-![alt text](../../../../images/aws-pfsense-router/diagrama-rede/1.png)
+![alt text](/images/aws-pfsense-router/diagrama-rede/1.png)
 
 ## 3) VPCs
 
@@ -79,76 +81,76 @@ Teremos **2 VPC** na mesma região, cada qual com sua respectiva faixa de IP. O 
 
 Vamos criar nossa **Primeira VPC**. Observer que não temos nenhuma VPC associada nessa conta.
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/vpc/1.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/vpc/1.png)
 
 #### 3.1.1) Criando VPC
 
 Os passos abaixos irá criar uma **Nova VPC**, a faixa de Rede usada será: **10.170.0.0/16**
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/vpc/2.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/vpc/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/vpc/3.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/vpc/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/vpc/4.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/vpc/4.png)
 
 Habilitando essa flag, fará com que as EC2 criadas nessa VPC já tenham os nomes das instâncias associadas ao DNS da AWS.
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/vpc/5.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/vpc/5.png)
 
 #### 3.1.2) Criando SubNet
 
 Localize o menu **Subnet**, e clique no menu **Create subnet**, conforme mostra na imagem abaixo.
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/subnet/1.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/subnet/1.png)
 
 Escolha qual VPC irá associar a essa subnet.
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/subnet/2.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/subnet/2.png)
 
 Um detalhe importante é que podemos criar várias subnets dentro de uma VPC, para esse material iremos criar uma Subnet na classe C, ou seja, a subnet terá o seguinte endereço de rede: **10.170.1.0/24**
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/subnet/3.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/subnet/3.png)
 
 Para que uma **EC2** possa ter um serviço acessado **externamente**, ou seja, que outras pessoas possam acessar o conteúdo dessa **EC2** é necessário que ela tenha um **IP Público** vinculado a essa **EC2**, quando habilitado essa flag dentro da subnet, em outras palavras, vc está permitindo que essa **EC2** vinculada a essa Subnet possa ser acessada externamente por um **IP Publico**.
 
 **Obs.:** Caso queira criar uma **Subnet apenas com acesso interno**, basta *NÃO* habilitar o recurso abaixo. 
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/subnet/4.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/subnet/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/subnet/5.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/subnet/5.png)
 
 #### 3.1.3) Criando Internet Gateway
 
 No menu localize **Internet Gateway**, e clique em **Create internet gateway**.
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/internet-gateway/1.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/internet-gateway/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/internet-gateway/2.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/internet-gateway/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/internet-gateway/3.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/internet-gateway/3.png)
 
 Após criado deve-se attachar qual VPC estará vinculada a esse internet gateway.
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/internet-gateway/4.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/internet-gateway/4.png)
 
 
 #### 3.1.4) Tabela de Roteamento   
 
 É aqui que vamos definir se a subnet pode acessar a Internet, devemos criar uma rota default apontando para o gateway de internet criado no passo anterior.
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/route-table/1.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/route-table/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/route-table/2.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/route-table/2.png)
 
 Adiconando a rota default para internet.
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/route-table/3.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/route-table/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/route-table/4.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/route-table/4.png)
 
 Por fim precisamos associar qual subnet essa configuração de rota irá aplicar-se.
 
-![alt text](../../../../images/aws-pfsense-router/primeira-vpc/route-table/5.png)
+![alt text](/images/aws-pfsense-router/primeira-vpc/route-table/5.png)
 
 
 ### 3.2) Segunda VPC
@@ -161,48 +163,48 @@ Basicamente iremos realizar os mesmos passos feitos na criação da primeira VPC
 
 Será criado uma VPC para atender o ambiente de desenvolvimento, cuja faixa de rede é: **10.160.0.0/16**
 
-![alt text](../../../../images/aws-pfsense-router/segunda-vpc/vpc/1.png)
+![alt text](/images/aws-pfsense-router/segunda-vpc/vpc/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/segunda-vpc/vpc/2.png)
+![alt text](/images/aws-pfsense-router/segunda-vpc/vpc/2.png)
 
 #### 3.2.2) Criando SubNet
 
 Criar uma nova subnet e vincular e esssa recém criada **VPC => 10.160.0.0/16**
 
-![alt text](../../../../images/aws-pfsense-router/segunda-vpc/subnet/1.png)
+![alt text](/images/aws-pfsense-router/segunda-vpc/subnet/1.png)
 
 A subnet que será criada terá o seguinte endereço associado: **10.160.1.0/24**
 
-![alt text](../../../../images/aws-pfsense-router/segunda-vpc/subnet/2.png)
+![alt text](/images/aws-pfsense-router/segunda-vpc/subnet/2.png)
 
 #### 3.2.3) Criando Internet Gateway
 
 Agora vamos criar um outro internet gateway e vincular a segunda VPC **10.160.0.0/24**
 
-![alt text](../../../../images/aws-pfsense-router/segunda-vpc/internet-gateway/1.png)
+![alt text](/images/aws-pfsense-router/segunda-vpc/internet-gateway/1.png)
 
 Depois de criado deve-se atachar qual **VPC** esse internet gateway irá atender.
 
-![alt text](../../../../images/aws-pfsense-router/segunda-vpc/internet-gateway/2.png)
+![alt text](/images/aws-pfsense-router/segunda-vpc/internet-gateway/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/segunda-vpc/internet-gateway/3.png)
+![alt text](/images/aws-pfsense-router/segunda-vpc/internet-gateway/3.png)
 
 #### 3.2.4) Tabela de Roteamento
 
 
 Vamos definir se a subnet pode acessar a Internet criando uma rota default apontando para o gateway de internet criado no passo anterior.
 
-![alt text](../../../../images/aws-pfsense-router/segunda-vpc/route-table/1.png)
+![alt text](/images/aws-pfsense-router/segunda-vpc/route-table/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/segunda-vpc/route-table/2.png)
+![alt text](/images/aws-pfsense-router/segunda-vpc/route-table/2.png)
 
 Adiconando a rota default para internet.
 
-![alt text](../../../../images/aws-pfsense-router/segunda-vpc/route-table/3.png)
+![alt text](/images/aws-pfsense-router/segunda-vpc/route-table/3.png)
 
 Por fim precisamos associar qual subnet essa configuração de rota irá aplicar-se.
 
-![alt text](../../../../images/aws-pfsense-router/segunda-vpc/route-table/4.png)
+![alt text](/images/aws-pfsense-router/segunda-vpc/route-table/4.png)
 
 ## 4) EC2 PfSense
 
@@ -210,121 +212,121 @@ Por fim precisamos associar qual subnet essa configuração de rota irá aplicar
 
 Nesse passo a passo vamos criar uma Instância EC2 com Pfsense.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/startup/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/startup/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/startup/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/startup/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/startup/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/startup/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/startup/4.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/startup/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/startup/5.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/startup/5.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/startup/6.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/startup/6.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/startup/7.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/startup/7.png)
 
 ### 4.2) Conectando na Instância
 
 Para descobrir a senha gerada pelo instalador, será necessário fazer um snapshot do boot do Sistema onde a senha é visualizada no browser, para realizar o primeiro acesso.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/conectando-pfsense/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/conectando-pfsense/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/conectando-pfsense/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/conectando-pfsense/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/conectando-pfsense/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/conectando-pfsense/3.png)
 
 ### 4.3) Adicionando Usuário Admin
 
 Após login, vamos dar inicio as configurações inicias. A primeira configuração a ser realizada, será a criação de um usuário com perfil **Admin**.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/user-admin/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/user-admin/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/user-admin/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/user-admin/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/user-admin/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/user-admin/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/user-admin/4.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/user-admin/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/user-admin/5.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/user-admin/5.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/user-admin/6.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/user-admin/6.png)
 
 ### 4.4) Configurações Básicas
 
 Algumas configurções básicas são necessárias para garantir acesso externo do Pfsense para internet.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/configuracoes-basicas/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/configuracoes-basicas/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/configuracoes-basicas/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/configuracoes-basicas/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/configuracoes-basicas/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/configuracoes-basicas/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/configuracoes-basicas/4.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/configuracoes-basicas/4.png)
 
 ### 4.5) Certificado Web Browser
 
 Se vc tem um certificado válido para um domínio, pode-se usá-lo no frontend do Pfsense.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/certificado-web/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/certificado-web/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/certificado-web/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/certificado-web/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/certificado-web/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/certificado-web/3.png)
 
 ### 4.6) Adicionando Interface de Rede
 
 Nessa etapa , vamos adicionar uma segunda interface de rede. Essa interface funcionará como uma rede local. 
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/interface-rede/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/interface-rede/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/interface-rede/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/interface-rede/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/interface-rede/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/interface-rede/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/interface-rede/4.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/interface-rede/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/interface-rede/5.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/interface-rede/5.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/interface-rede/6.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/interface-rede/6.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/interface-rede/7.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/interface-rede/7.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/interface-rede/8.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/interface-rede/8.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/interface-rede/9.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/interface-rede/9.png)
 
 ### 4.7) Desabilitando Firewall
 
 Nesse momento, o objtivo é concentrar o acesso e não bloquear os acessos, por isso, vamos desabilitar o firewall.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/desabilitar-firewall/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/desabilitar-firewall/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/desabilitar-firewall/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/desabilitar-firewall/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/desabilitar-firewall/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/desabilitar-firewall/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/desabilitar-firewall/4.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/desabilitar-firewall/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/desabilitar-firewall/5.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/desabilitar-firewall/5.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/desabilitar-firewall/6.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/desabilitar-firewall/6.png)
 
 ### 4.8) Adicionando Ip Estático na EC2
 
 Nessa etapa vamos adicionar um **IP Fixo** para facilitar os acessos via VPN, para isso desligue a VM e localize o menu, **Elastic IPS**
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/ip-elastic/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/ip-elastic/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/ip-elastic/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/ip-elastic/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/ip-elastic/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/ip-elastic/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/ip-elastic/4.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/ip-elastic/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/ip-elastic/5.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/ip-elastic/5.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/ip-elastic/6.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/ip-elastic/6.png)
 
 
 ## 5) OpenVPN
@@ -333,31 +335,31 @@ Nessa etapa vamos adicionar um **IP Fixo** para facilitar os acessos via VPN, pa
 
 Nessa etapa vamos configurar o OpenVPN com autenticação baseada em FreeRadios + Google Autentication. Para iniciarmos os trabalhos, vamos criar primeiramente o Autoridade Certificadora auto assinado.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/ca/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/ca/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/ca/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/ca/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/ca/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/ca/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/ca/4.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/ca/4.png)
 
 ### 5.2) Criando um Certificado
 
 Agora vamos criar um certificado para nosso serviço.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/certificado/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/certificado/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/certificado/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/certificado/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/certificado/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/certificado/3.png)
 
 ### 5.3) Criando Certificado para Usuário
 
 Cada usuário que precisar conectar-se em nossa VPN precisará de um certificado assinado pela certificadora **OpenVPN_CA**, gerada nos passos anteriores.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/certificado-usuario/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/certificado-usuario/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/certificado-usuario/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/certificado-usuario/2.png)
 
 ### 5.4) Instalação de Pacotes
 
@@ -367,23 +369,23 @@ Instalar os pacotes abaixo para exportar as configurações do usuário.
 
 Instalar FreeRadius
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/packages/5.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/packages/5.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/packages/6.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/packages/6.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/packages/7.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/packages/7.png)
 
 #### 5.4.2) OpenVPN Exporter
 
 Instalar OpenVPN Exporter
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/packages/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/packages/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/packages/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/packages/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/packages/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/packages/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/packages/4.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/packages/4.png)
 
 ### 5.5) FreeRadios Configurações
 
@@ -391,117 +393,117 @@ Instalar OpenVPN Exporter
 
 Qual interface o serviço FreeRadiu vai ficar listen?
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/freeradius/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/freeradius/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/freeradius/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/freeradius/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/freeradius/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/freeradius/3.png)
 
 #### 5.5.2) Nas Clients
 
 Aqui vamos definir qual usuário irá conectar-se no FreeRadius para validar a autenticação do usuário que está requisitando o login.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/nas-client/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/nas-client/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/nas-client/4.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/nas-client/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/nas-client/5.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/nas-client/5.png)
 
 #### 5.5.3) Usuário FreeRadios    
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/user-freeradius/6.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/user-freeradius/6.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/user-freeradius/7.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/user-freeradius/7.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/user-freeradius/8.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/user-freeradius/8.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/user-freeradius/9.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/user-freeradius/9.png)
 
 ### 5.6) OpenVPN Wizard
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/4.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/5.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/5.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/6.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/6.png)
 
 Aqui você precisa definir qual é a faixa de Rede da VPN.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/7.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/7.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/8.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/8.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/9.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/9.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/10.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/10.png)
 
 Depois de Configurado o Wizard, vamos ajustar alguns detalhes.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/11.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/11.png)
 
 Mude o autenticador para usar a base do FreeRadius.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/12.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/12.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/13.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/13.png)
 
 Aqui é um detalhe insteressante, pode-se definir rotas dinamicamentes e até mesmo definir os logs do serviço.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/14.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/14.png)
 
 Entre com o IP Fixo da EC2.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/15.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/15.png)
 
 Exportando a configuração do Usuário.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/16.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/16.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/17.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/17.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/18.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/18.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/19.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/19.png)
 
 Liberar no security Group da AWS a porta **1194** protocolo **UDP**.
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/21.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/21.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/22.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/22.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/23.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/openvpn-wizard/23.png)
 
 ### 5.7) Adicionando Usuário de VPN
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/usuario-vpn/1.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/usuario-vpn/1.png)
 
 **DEIXE A SENHA EM BRANCO**
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/usuario-vpn/2.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/usuario-vpn/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/usuario-vpn/3.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/usuario-vpn/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/usuario-vpn/4.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/usuario-vpn/4.png)
 
 Vamos validar se a **Senha + Autenticador** está funcionando bem. 
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/usuario-vpn/5.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/usuario-vpn/5.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/usuario-vpn/6.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/usuario-vpn/6.png)
 
 ### 5.8) VPN Connect
 
 Estabelecendo Conexão
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/vpn-connect/24.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/vpn-connect/24.png)
 
-![alt text](../../../../images/aws-pfsense-router/ec2/pfsense/openvpn/vpn-connect/25.png)
+![alt text](/images/aws-pfsense-router/ec2/pfsense/openvpn/vpn-connect/25.png)
 
 ## 6) IPSec
 ### 6.1) IPSec Wizard
@@ -510,38 +512,38 @@ Estabelecendo Conexão
 
 Nessa etapa vamos usar o próprio **PfSense**, para criar as configurações necessárias tanto na **AWS**, quanto no **PfSense**. Para isso é necessário que o **PfSense** tenha acesso a uma conta na AWS e atrelar as seguintes permissões.
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/permissoes-iam/1.png)
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/permissoes-iam/2.png)
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/permissoes-iam/3.png)
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/permissoes-iam/4.png)
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/permissoes-iam/5.png)
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/permissoes-iam/6.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/permissoes-iam/1.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/permissoes-iam/2.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/permissoes-iam/3.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/permissoes-iam/4.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/permissoes-iam/5.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/permissoes-iam/6.png)
 
 #### 6.1.2) Pacotes Pfsense Necessários
 
 Para que o **Pfesene**, possa manipular **AWS**, é necessário que tenha um pacote para que essa interação aconteça.
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/pacotes/1.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/pacotes/1.png)
 
 #### 6.1.3) Fechando Túnel
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/1.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/2.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/3.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/4.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/5.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/5.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/6.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/6.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/7.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/7.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/8.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/8.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/9.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-wizard/fechando-tunel/9.png)
 
 
 ### 6.2) IPSec Manualmente
@@ -550,41 +552,41 @@ Para que o **Pfesene**, possa manipular **AWS**, é necessário que tenha um pac
 
 Nessa etapa vamos contruir o tunel manualmente, isso deixará claro o processo que é realizado pelo Wizard.
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/1.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/2.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/3.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/4.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/5.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/5.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/6.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/6.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/7.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/7.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/8.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/8.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/9.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/9.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/10.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/10.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/11.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/11.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/12.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/12.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/13.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/13.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/14.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/14.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/15.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/15.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/16.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/16.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/17.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/17.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/18.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/configurando-aws/18.png)
 
 ```yaml
 ! Amazon Web Services
@@ -790,92 +792,92 @@ Automatically ping host : ! Provide the IP address of an EC2 instance in VPC tha
 
 ##### 6.2.2.1) Fase 1
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-1/1.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-1/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-1/2.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-1/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-1/3.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-1/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-1/4.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-1/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-1/5.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-1/5.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-1/6.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-1/6.png)
 
 ##### 6.2.2.2) Fase 2
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-2/1.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-2/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-2/2.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-2/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-2/3.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-2/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-2/4.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-2/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-2/5.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-2/5.png)
 
 ##### 6.2.2.3) Fase 3
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-3/1.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-3/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-3/2.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-3/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-3/3.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-3/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-3/4.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-3/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-3/5.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/primeiro-ip/fase-3/5.png)
 
 ### 6.2.3) Fechando com Segundo IP Público
 
 ##### 6.2.3.1) Fase 1
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-1/1.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-1/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-1/2.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-1/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-1/3.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-1/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-1/4.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-1/4.png)
 
 ##### 6.2.3.2) Fase 2
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-2/1.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-2/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-2/2.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-2/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-2/3.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-2/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-2/4.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-2/4.png)
 
 ##### 6.2.3.3) Fase 3
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-3/1.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-3/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-3/2.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-3/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-3/3.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-3/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-3/4.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-3/4.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-3/5.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/segundo-ip/fase-3/5.png)
 
 ### 6.3) Fechando Conexão com Primeiro IP Público
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/primeiro-ip/1.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/primeiro-ip/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/primeiro-ip/2.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/primeiro-ip/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/primeiro-ip/3.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/primeiro-ip/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/primeiro-ip/4.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/primeiro-ip/4.png)
 
 ### 6.4) Fechando Conexão com Segundo IP Público        
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/segundo-ip/1.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/segundo-ip/1.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/segundo-ip/2.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/segundo-ip/2.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/segundo-ip/3.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/segundo-ip/3.png)
 
-![alt text](../../../../images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/segundo-ip/4.png)
+![alt text](/images/aws-pfsense-router/ipsec/ipsec-manualmente/conectando/segundo-ip/4.png)

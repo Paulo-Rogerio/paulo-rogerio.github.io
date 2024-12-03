@@ -1,5 +1,7 @@
 ---
 layout: post
+collection: aws
+permalink: /aws/snapshot-ami
 title:  "AWS Snapshot Ami"
 author: Paulo Rogério
 date:   2024-11-28 20:50:00 -0300
@@ -26,28 +28,28 @@ published: true
 
 Busque no menu da AWS por *EC2*, localize a sua instância que deseja realizar um *SnapShot*.
 
-![alt text](../../../../images/aws-snapshot-ami//1-snaptshot.png "Instância EC2")
+![alt text](/images/aws-snapshot-ami//1-snaptshot.png "Instância EC2")
 
 Localize qual dispositivo de bloco está associado a esta *Instância*.
 
-![alt text](../../../../images/aws-snapshot-ami//2-snaptshot.png "Volumes EC2")
+![alt text](/images/aws-snapshot-ami//2-snaptshot.png "Volumes EC2")
 
 Ao ser redirecionado para a tela de gerenciamento de Volumes, crie um *SnapShot*.
 
-![alt text](../../../../images/aws-snapshot-ami//3-snaptshot.png "SnaptShot")
-![alt text](../../../../images/aws-snapshot-ami//4-snaptshot.png "SnaptShot")
-![alt text](../../../../images/aws-snapshot-ami//5-snaptshot.png "SnaptShot")
+![alt text](/images/aws-snapshot-ami//3-snaptshot.png "SnaptShot")
+![alt text](/images/aws-snapshot-ami//4-snaptshot.png "SnaptShot")
+![alt text](/images/aws-snapshot-ami//5-snaptshot.png "SnaptShot")
 
 #### 1.2) Criando Imagem
 
 No menu localize *SnapShots*, selecione o snapshot recém criado e crie uma Imagem.
 
-![alt text](../../../../images/aws-snapshot-ami//1-imagem.png "Imagem")
-![alt text](../../../../images/aws-snapshot-ami//2-imagem.png "Imagem")
+![alt text](/images/aws-snapshot-ami//1-imagem.png "Imagem")
+![alt text](/images/aws-snapshot-ami//2-imagem.png "Imagem")
 
 No menu localize *Imagens* => *AMIs*
 
-![alt text](../../../../images/aws-snapshot-ami//3-imagem.png "Imagem")
+![alt text](/images/aws-snapshot-ami//3-imagem.png "Imagem")
 
 ## 2) Restore 
 
@@ -56,26 +58,26 @@ Ex:
 
 Caso queira restaurar a partir do menu *Imagens* => *AMIs*
 
-![alt text](../../../../images/aws-snapshot-ami//1-restore.png "Imagem")
+![alt text](/images/aws-snapshot-ami//1-restore.png "Imagem")
 
 #### 2.1) Criando EC2 a partir de uma Imagem
 
 Na tela de gerenciamento das *Instâncias EC2*, crie uma nova Instância.
 
-![alt text](../../../../images/aws-snapshot-ami//2-restore.png "Restore")
+![alt text](/images/aws-snapshot-ami//2-restore.png "Restore")
 
 Localize o menu *Minhas AMIs*
 
-![alt text](../../../../images/aws-snapshot-ami//3-restore.png "Restore")
-![alt text](../../../../images/aws-snapshot-ami//4-restore.png "Restore")
+![alt text](/images/aws-snapshot-ami//3-restore.png "Restore")
+![alt text](/images/aws-snapshot-ami//4-restore.png "Restore")
 
 Escolha a chave para acesso SSH
 
-![alt text](../../../../images/aws-snapshot-ami//5-restore.png "Restore")
+![alt text](/images/aws-snapshot-ami//5-restore.png "Restore")
 
 Aguarde até que a *Instância* esteja pronta.
 
-![alt text](../../../../images/aws-snapshot-ami//6-restore.png "Restore")
+![alt text](/images/aws-snapshot-ami//6-restore.png "Restore")
 
 ## 3) Destruindo Artefatos
 
@@ -85,10 +87,10 @@ Para evitar de manter essa imagens na AWS gerando custos desnecessário, e inter
 
 No menu localize *Imagens* => *AMIs*, em *Actions* clique em *Cancelar Registro*.
 
-![alt text](../../../../images/aws-snapshot-ami//1-remove.png "Remove")
+![alt text](/images/aws-snapshot-ami//1-remove.png "Remove")
 
 #### 3.2) Excluindo SnapShot
 
 No menu localize *Elastic Block Store* => *SnapShot*, em *Actions* clique em *Delete*.
 
-![alt text](../../../../images/aws-snapshot-ami//2-remove.png "Remove")
+![alt text](/images/aws-snapshot-ami//2-remove.png "Remove")
