@@ -1,5 +1,7 @@
 ---
 layout: post
+collection: linux
+permalink: /linux/chef
 title:  "Linux Chef Workstation"
 author: Paulo Rogério
 date:   2024-11-28 20:50:00 -0300
@@ -188,7 +190,7 @@ which ruby
 ### 2.2) Configure
 Navegue no servidor na seguinte estrutura, e faça o dowload do knife.rb. Esse arquivo contém os parâmetros necessários para submeter os uploads dos cookbooks.
 
-![alt text](../../../../images/linux/chef-workstation/01-workstation.jpg)
+![alt text](/images/linux/chef-workstation/01-workstation.jpg)
 
 #### Knife
 ```bash
