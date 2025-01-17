@@ -1,84 +1,206 @@
 ---
 layout: post
-collection: linux
-permalink: /linux/crontab-systemd
-title:  "Linux Crontab By Systemd"
+collection: automation
+permalink: /automation/vagrant
+title:  "Commands Vagrant"
 author: Paulo Rogério
-date:   2025-01-03 11:27:00 -0300
-categories: [linux]
+date:   2025-01-17 06:39:00 -0300
+categories: [automation]
 published: true
 ---
 
-# Crontab By Systemd
+# Vagrant cheat-sheet
 
-- [1) Running Crontab By Systemd](#1-running-crontab-by-systemd)
-  - [1.1) Unit Service](#11-unit-service)
-  - [1.2) Unit Timer](#12-unit-timer)
-  - [1.3) Usage](#13-usage)  
+- [1) Creating a VM](#1-creating-a-vm)
+- [2) Starting a VM](#2-starting-a-vm)
+- [3) Getting Into a VM](#3-getting-into-a-vm)
+- [4) Stopping a VM](#4-stopping-a-vm)
+- [5) Cleaning Up a VM](#5-cleaning-up-a-vm)
+- [6) Boxes](#6-boxes)
+- [7) Saving Progress](#7-saving-progress)
+- [8) Tips](#8-tips)
+- [9) Plugins](#9-plugins)
+- [10) Notes](#10-notes)  
 
 
-## 1) Running Crontab By Systemd
+## 1) Creating a VM
 
-Manager crontab by systemd
 
-# 1.1) Unit Service
-
-```bash
-root@study:~# cat > /opt/scripts/paulo.sh <<EOF
-#!/bin/bash
-echo $(date) >> /tmp/paulo.txt
-EOF
-root@study:~# chmod +x /opt/scripts/paulo.sh
-```
+***Initialize Vagrant with a Vagrantfile and ./.vagrant directory, using no specified base image. Before you can do vagrant up, you'll need to specify a base image in the Vagrantfile.***
 
 ```bash
-cat > /etc/systemd/system/paulo.service <<EOF
-[Unit]
-Description=Script Paulo Test
+vagrant init
+``` 
 
-[Service]
-Type=oneshot
-ExecStart=/bin/bash /opt/scripts/paulo.sh
-EOF
-```
-
-# 1.2) Unit Timer
+***Initialize Vagrant with a specific box. To find a box, go to the public Vagrant box catalog. When you find one you like, just replace it's name with boxpath. For example, vagrant init ubuntu/trusty64.***
 
 ```bash
-root@study:~# cat > /etc/systemd/system/paulo.timer <<EOF
-[Unit]
-Description=Run script paulao
+vagrant init <boxpath>
+``` 
 
-[Timer]
-OnCalendar=*-*-* *:00/01:00
-Persistent=true
+## 2) Starting a VM
 
-[Install]
-WantedBy=timers.target
-EOF
-
-root@study:~# systemctl daemon-reload
-root@study:~# systemctl start paulo.timer
-root@study:~# systemctl status paulo.timer
-root@study:~# systemctl enable paulo.timer
-root@study:~# systemctl stop paulo.timer
-```
-
-# 1.3) Usage
+***Starts vagrant environment (also provisions only on the FIRST vagrant up).***
 
 ```bash
-# Options Usage
-# hourly    *-*-* *:00:00
-# daily     *-*-* 00:00:00
-# weekly    Mon *-*-* 00:00:00
-# mounthly  *-*-01 00:00:00
-# yearly    *-01-01 00:00:00
-
-# Exemples
-# *-*-* 08:30:00             => All days at 08:30
-# Sta,Sun *-*-* 05:00:00     => Saturday and Sunday at 05:00:00
-# *-*-01 13:15,30,45:00      => At 13:15, 13:30, 13:45 of the first day of the month
-# Fri *-09..12-* 16:20:00    => At 16:20 every friday the september, october, november and december
-# Mon, Tue *-*-1,15 08:30:00 => At 08:30 of the first and fifteenth day of each month if day equal monday and tuesday
-# *-*-* *:00/05:00           => Every 5 minutes 
+vagrant up
 ```
+
+***Resume a suspended machine (vagrant up works just fine for this as well).***
+
+```bash
+vagrant resume
+```
+
+***Forces reprovisioning of the vagrant machine.***
+
+```bash
+vagrant provision 
+```
+
+***Restarts vagrant machine, loads new Vagrantfile configuration.***
+
+```bash
+vagrant reload 
+```
+
+***Restart the virtual machine and force provisioning.***
+
+```bash
+vagrant reload --provision 
+```
+
+## 3) Getting into a VM
+
+***Connects to machine via SSH.***
+
+```bash
+vagrant ssh 
+```
+
+***If you give your box a name in your Vagrantfile, you can ssh into it with boxname. Works from any directory.***
+
+```bash
+vagrant ssh <boxname> 
+```
+
+## 4) Stopping a VM
+
+***Stops the vagrant machine.***
+
+```bash
+vagrant halt
+```
+
+***Suspends a virtual machine (remembers state).***
+
+```bash
+vagrant suspend
+``` 
+
+## 5) Cleaning Up a VM
+
+***Stops and deletes all traces of the vagrant machine.***
+
+```bash
+vagrant destroy
+``` 
+
+***Same as above, without confirmation.***
+
+```bash
+vagrant destroy -f 
+```
+
+## 6) Boxes
+
+***See a list of all installed boxes on your computer.***
+
+```bash
+vagrant box list 
+```
+
+***Download a box image to your computer.***
+
+```bash
+vagrant box add <name> <url>
+```
+
+***Check for updates vagrant box update.***
+```bash
+vagrant box outdated
+``` 
+
+***Deletes a box from the machine.***
+
+```bash
+vagrant box remove <name>
+```
+
+***Packages a running virtualbox env in a reusable box.***
+```bash
+vagrant package 
+```
+
+## 7) Saving Progress
+
+***Vm-name is often default. Allows us to save so that we can rollback at a later time.***
+
+```bash
+vagrant snapshot save [options] [vm-name] <name> 
+```
+
+## 8) Tips
+
+***Get the vagrant version.***
+
+```bash
+vagrant -v
+```
+
+***Outputs status of the vagrant machine.***
+
+```bash
+vagrant status
+```
+***Outputs status of all vagrant machines.***
+
+```bash
+vagrant global-status
+```
+
+***Same as above, but prunes invalid entries.*** 
+
+```bash
+vagrant global-status --prune 
+```
+
+***Use the debug flag to increase the verbosity of the output.***
+
+```bash
+vagrant provision --debug
+```
+
+***Yes, vagrant can be configured to deploy code!***
+
+```bash
+vagrant push
+```
+
+***Runs vagrant up, forces provisioning and logs all output to a file.***
+
+```bash
+vagrant up --provision | tee provision.log 
+```
+
+## 9) Plugins
+
+***Install vagrant-hostsupdater to update your /etc/hosts file automatically each time you start/stop your vagrant box.***
+
+```bash
+vagrant plugin install vagrant-hostsupdater
+```
+
+## 10) Notes 
+
+***If you are using*** **VVV** ***, you can enable xdebug by running vagrant ssh and then xdebug_on from the virtual machine's CLI.***
