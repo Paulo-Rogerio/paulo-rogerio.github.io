@@ -4,7 +4,7 @@ collection: kubernetes
 permalink: /kubernetes/learning
 title:  "Aprendizados Kubernetes"
 author: Paulo Rogério
-date:   2025-12-31 19:24:00 -0300
+date:   2025-01-20 06:22:00 -0300
 categories: [kubernetes]
 published: true
 ---
