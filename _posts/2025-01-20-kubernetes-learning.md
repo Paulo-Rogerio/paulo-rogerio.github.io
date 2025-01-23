@@ -15,6 +15,6 @@ published: true
   - [1.1) Kind](https://paulo-rogerio.github.io/kubernetes/provisioner-kubernetes-kind){:target="_blank"}
   - [1.2) Vagrant](https://paulo-rogerio.github.io/kubernetes/provisioner-kubernetes-vagrant){:target="_blank"}
 - [2) Kubernetes]()
-  - [2.1) Aliases](https://paulo-rogerio.github.io/kubernetes/aliases){:target="_blank"})
+  - [2.1) Aliases](https://paulo-rogerio.github.io/kubernetes/aliases){:target="_blank"}
   - [2.2) Componentes Kubernetes](https://paulo-rogerio.github.io/kubernetes/componentes){:target="_blank"}
   - [2.3) Api Kubernetes]()
