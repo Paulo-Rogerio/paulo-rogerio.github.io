@@ -39,12 +39,18 @@ alias k8s-alias='
                 printf "%s \n" "kgd ............ kubectl get deployment"
                 printf "%s \n" "kgdall ......... kubectl get deployment --all-namespaces"
                 printf "%s \n" "kdd ............ kubectl delete deployment"
-                printf "%s \n" "krestpo ........ kubectl rollout restart deploy"
-                printf "%s \n" "kcdyaml ........ kubectl create deployment nginx --image nginx --dry-run=client -o yaml"
+                printf "%s \n" "kddall ......... kubectl delete deployment --all"
+                printf "%s \n" "kgrs ........... kubectl get replicaset"
                 printf "%s \n" "kgn ............ kubectl get nodes"
                 printf "%s \n" "kgnl ........... kubectl get nodes --show-labels"
                 printf "%s \n" "kaf ............ kubectl apply -f"
                 printf "%s \n" "kdf ............ kubectl delete -f"
+                printf "%s \n" "kl ............. kubectl log"
+                printf "%s \n" "krp ............ kubectl run -it --image alpine myspec -- sh"
+                printf "%s \n" "krpyaml ........ kubectl run --image nginx nginx --dry-run=client -o yaml"
+                printf "%s \n" "krest .......... krest deployment/nginx"
+                printf "%s \n" "krest .......... krest -n default deployment frontend"
+                printf "%s \n" "kcdyaml ........ kubectl create deployment nginx --image nginx --dry-run=client -o yaml"
                 '
 
 alias k='kubectl'
@@ -63,15 +69,21 @@ alias kgpall='kubectl get pod --all-namespaces'
 alias kgd='kubectl get deployment'
 alias kgdall='kubectl get deployment --all-namespaces'
 alias kdd='kubectl delete deployment'
+alias kddall='kubectl delete deployment --all'
 
-alias krestpo='kubectl rollout restart deploy'
-alias kcdyaml='kubectl create deployment nginx --image nginx --dry-run=client -o yaml'
-
+alias kgrs='kubectl get replicaset'
 alias kgn='kubectl get nodes'
 alias kgnl='kubectl get nodes --show-labels'
 
 alias kaf='kubectl apply -f'
 alias kdf='kubectl delete -f'
+
+alias kl='kubectl logs'
+alias krp='kubectl run -it --image alpine myspec -- sh'
+alias krpyaml='kubectl run --image nginx nginx --dry-run=client -o yaml'
+
+alias krest='kubectl rollout restart'
+alias kcdyaml='kubectl create deployment nginx --image nginx --dry-run=client -o yaml'
 ```
 
 [Aliases Github](https://github.com/wuestkamp/Kubernetes-Certified-Administrator?tab=readme-ov-file){:target="_blank"}
@@ -82,6 +94,9 @@ alias kdf='kubectl delete -f'
 
 ```bash
 k8s-alias
+```
+
+```bash
 k .............. kubectl
 kgctx .......... kubectl config get-contexts
 kuctx .......... kubectl config use-context
@@ -95,16 +110,22 @@ kgpall ......... kubectl get pod --all-namespaces
 kgd ............ kubectl get deployment
 kgdall ......... kubectl get deployment --all-namespaces
 kdd ............ kubectl delete deployment
-krestpo ........ kubectl rollout restart deploy
-kcdyaml ........ kubectl create deployment nginx --image nginx --dry-run=client -o yaml
+kddall ......... kubectl delete deployment --all
+kgrs ........... kubectl get replicaset
 kgn ............ kubectl get nodes
 kgnl ........... kubectl get nodes --show-labels
 kaf ............ kubectl apply -f
 kdf ............ kubectl delete -f
+kl ............. kubectl log
+krp ............ kubectl run -it --image alpine myspec -- sh
+krpyaml ........ kubectl run --image nginx nginx --dry-run=client -o yaml
+krest .......... krest deployment/nginx
+krest .......... krest -n default deployment frontend
+kcdyaml ........ kubectl create deployment nginx --image nginx --dry-run=client -o yaml
 ```
 
-
+## Ex:
 ```bash
-krestpo -n kube-system kube-proxy
+krest -n kube-system kube-proxy
 ```
 
