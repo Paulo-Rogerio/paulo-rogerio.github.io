@@ -4,14 +4,17 @@ collection: kubernetes
 permalink: /kubernetes/learning
 title:  "Aprendizados Kubernetes"
 author: Paulo Rogério
-date:   2025-01-20 06:22:00 -0300
+date:   2025-01-22 23:07:13 -0300
 categories: [kubernetes]
 published: true
 ---
 
 # 🚀 Kubernetes Learning
 
-- [1) Kubernetes On Premise]()
+- [1) Install Kubernetes On Premise]()
   - [1.1) Kind](https://paulo-rogerio.github.io/kubernetes/provisioner-kubernetes-kind){:target="_blank"}
   - [1.2) Vagrant](https://paulo-rogerio.github.io/kubernetes/provisioner-kubernetes-vagrant){:target="_blank"}
-
+- [2) Kubernetes]()
+  - [2.1) Alias]()
+  - [2.2) Componentes Kubernetes](https://paulo-rogerio.github.io/kubernetes/componentes){:target="_blank"}
+  - [2.3) Api Kubernetes]()
