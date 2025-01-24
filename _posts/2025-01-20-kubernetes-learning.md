@@ -4,7 +4,7 @@ collection: kubernetes
 permalink: /kubernetes/learning
 title:  "Learning Kubernetes"
 author: Paulo Rogério
-date:   2025-01-23 09:07:13 -0300
+date:   2025-01-23 21:07:13 -0300
 categories: [kubernetes]
 published: true
 ---
@@ -17,4 +17,7 @@ published: true
 - [2) Kubernetes]()
   - [2.1) Aliases](https://paulo-rogerio.github.io/kubernetes/aliases){:target="_blank"}
   - [2.2) Componentes Kubernetes](https://paulo-rogerio.github.io/kubernetes/componentes){:target="_blank"}
-  - [2.3) Api Kubernetes]()
+  - [2.3) Explorando Api Kubernetes](https://paulo-rogerio.github.io/kubernetes/api){:target="_blank"}
+- [3) Etcd]()
+  - [3.1) Etcd Static Deploy](https://paulo-rogerio.github.io/kubernetes/etcd-deploy){:target="_blank"}
+  - [3.2) Etcd Backup / Restore](https://paulo-rogerio.github.io/kubernetes/etcd-backup-restore){:target="_blank"}
