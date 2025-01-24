@@ -18,4 +18,14 @@
         </li>
         {% endfor %}
     </ul>
+
+    <!-- Menus -->
+    <h2>Menus</h2>
+    <ul>
+        {% for menu in site.menus %}
+        <li>
+            <a href="{{ menu.url }}">{{ menu.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>    
 </div>

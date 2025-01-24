@@ -16,6 +16,9 @@ collections:
     output: true
   category:
     output: true
+  menus:
+    output: true
+
 
 defaults:
   - scope:
@@ -33,6 +36,11 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+  - scope:
+      path: ""
+      type: "menus"
+    values:
+      layout: "menu"      
   - scope:
       path: ""
     values:

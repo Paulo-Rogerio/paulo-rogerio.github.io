@@ -176,7 +176,7 @@ root@prgs-control-plane:/# etcdctl member list --write-out=table
 #### Health Check
 
 ```bash
-root@prgs-control-plane:/# ETCDCTL_API=3 etcdctl endpoint health --endpoints="https://172.18.0.3:2379"
+root@prgs-control-plane:/# etcdctl endpoint health --endpoints="https://172.18.0.3:2379"
 https://172.18.0.3:2379 is healthy: successfully committed proposal: took = 11.292646ms
 ```
 
@@ -184,7 +184,7 @@ https://172.18.0.3:2379 is healthy: successfully committed proposal: took = 11.2
 #### Endpoint Status
 
 ```bash
-root@prgs-control-plane:/# ETCDCTL_API=3 etcdctl endpoint status --write-out=table --endpoints="https://172.18.0.3:2379"
+root@prgs-control-plane:/# etcdctl endpoint status --write-out=table --endpoints="https://172.18.0.3:2379"
 +-------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
 |        ENDPOINT         |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
 +-------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
@@ -195,7 +195,7 @@ root@prgs-control-plane:/# ETCDCTL_API=3 etcdctl endpoint status --write-out=tab
 #### Read Data
 
 ```bash
-ETCDCTL_API=3 etcdctl --endpoints=https://172.18.0.3:2379 get / --prefix
+root@prgs-control-plane:/# etcdctl --endpoints=https://172.18.0.3:2379 get / --prefix
 
 /registry/apiextensions.k8s.io/customresourcedefinitions/bgpadvertisements.metallb.io
 {"kind":"CustomResourceDefinition","apiVersion":"apiextensions.k8s.io/v1beta1","metadata":{"name":"bgpadvertisements.metallb.io","uid":"c282d792-d32f-41ab-be49-5080c899ed25","generation":1,"creationTimest

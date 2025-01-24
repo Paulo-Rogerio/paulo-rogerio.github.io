@@ -1,7 +1,7 @@
 ---
 layout: post
 collection: kubernetes
-permalink: /kubernetes/learning
+permalink: /kubernetes/learning-kubernetes
 title:  "Learning Kubernetes"
 author: Paulo Rogério
 date:   2025-01-23 21:07:13 -0300
