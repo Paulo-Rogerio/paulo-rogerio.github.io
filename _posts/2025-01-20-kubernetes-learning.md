@@ -20,5 +20,4 @@ published: true
   - [2.3) Explorando Api Kubernetes](https://paulo-rogerio.github.io/kubernetes/api){:target="_blank"}
 - [3) Etcd]()
   - [3.1) Etcd Static Deploy](https://paulo-rogerio.github.io/kubernetes/etcd-deploy){:target="_blank"}
-  - [3.2) Etcd Manipulando Database](https://paulo-rogerio.github.io/kubernetes/etcd-manager){:target="_blank"}
-  - [3.3) Etcd Backup / Restore](https://paulo-rogerio.github.io/kubernetes/etcd-backup-restore){:target="_blank"}
+  - [3.2) Etcd Backup / Restore](https://paulo-rogerio.github.io/kubernetes/etcd-backup-restore){:target="_blank"}
