@@ -122,6 +122,10 @@ path: /var/lib/etcd
 
 Segue o exemplo do arquivo original...
 
+```bash
+root@master-1:/home/vagrant# /etc/kubernetes/manifests/etcd.yaml
+```
+
 ```yaml
 spec:
   containers:
@@ -153,7 +157,9 @@ Substitua as entradas acima por:
 path: /opt/restore/etcd
 ```
 
-Segue o exemplo ....
+```bash
+root@master-1:/home/vagrant# /etc/kubernetes/manifests/etcd.yaml
+```
 
 ```yaml
 spec:
