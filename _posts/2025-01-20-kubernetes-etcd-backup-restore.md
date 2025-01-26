@@ -9,15 +9,14 @@ categories: [kubernetes]
 published: true
 ---
 
+## 🚀 Etcd Manutenção
+
 - [1) Check Service Etcd](#1-check-service-etcd)
 - [2) Start Pod](#2-start-pod)
 - [3) Backup Etcd](#3-backup-etcd)
 - [4) Check Backup Etcd](#4-check-backup-etcd)
 - [5) Restore Backup Etcd](#5-restore-backup-etcd)
 - [6) Check Status Cluster](#6-check-status-cluster)
-
-
-## 🚀 Etcd Manutenção
 
 #### 1) Check Service Etcd
 
