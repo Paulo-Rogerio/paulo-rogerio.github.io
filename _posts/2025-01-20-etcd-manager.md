@@ -9,5 +9,5 @@ categories: [etcd]
 published: true
 ---
 
-# 🚀 Etcd Manager 
+# 🚀 Gerenciando Cluster Etcd
 
