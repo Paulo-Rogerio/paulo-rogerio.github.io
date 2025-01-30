@@ -9,7 +9,7 @@ categories: [kubernetes]
 published: true
 ---
 
-## 🚀 Namespaces
+## 🚀 Gerenciando Namespaces
 
 - [1) Conceito Namespace](#1-conceito-namespace)
 - [2) Porque Deveria Trabalhar com Namespace](#2-porque-deveria-trabalhar-com-namespace)
@@ -32,6 +32,8 @@ Os namespaces do Kubernetes são partições lógicas em um cluster que fornecem
 ✨ ***Escalabilidade:*** Os namespaces facilitam o dimensionamento do cluster, fornecendo uma maneira de gerenciar recursos de forma independente 🔁📈.
 
 #### 3) Criando Namespace
+
+#### [Aliases Kubectl](https://paulo-rogerio.github.io/kubernetes/aliases)
 
 Criando Namespace usando manifesto yaml
 
@@ -70,6 +72,8 @@ namespace "prgs" deleted
 #### 4) Syntaxe Namespace
 
 Se eu não lembrar a sintexe do manifesto yaml para criar uma namespace?
+
+#### [Aliases Kubectl](https://paulo-rogerio.github.io/kubernetes/aliases)
 
 Gerar o yaml 
 
