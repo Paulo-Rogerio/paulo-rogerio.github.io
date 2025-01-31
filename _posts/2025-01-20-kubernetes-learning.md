@@ -24,18 +24,18 @@ published: true
   - [3.1) Aliases](https://paulo-rogerio.github.io/kubernetes/aliases){:target="_blank"}
   - [3.2) Componentes Kubernetes](https://paulo-rogerio.github.io/kubernetes/componentes){:target="_blank"}
   - [3.3) Api Kubernetes](https://paulo-rogerio.github.io/kubernetes/api){:target="_blank"}
-  - [3.6) Workload Management]()
+  - [3.6) Workload Management](#36-workload-management)
     - [3.6.1) Namespaces](https://paulo-rogerio.github.io/kubernetes/namespaces){:target="_blank"}
     - [3.6.2) Pod](https://paulo-rogerio.github.io/kubernetes/pods){:target="_blank"}
     - [3.6.3) Statefullset x Stateless ](https://paulo-rogerio.github.io/kubernetes/statefull-stateless){:target="_blank"}
     - [3.6.4) Deployment](https://paulo-rogerio.github.io/kubernetes/deployment){:target="_blank"}
     - [3.6.5) Replicaset](https://paulo-rogerio.github.io/kubernetes/replicaset){:target="_blank"}
-    - [3.6.6) Daemonset]()
-    - [3.6.7) Statefullset]()
+    - [3.6.6) Daemonset](https://paulo-rogerio.github.io/kubernetes/daemonset){:target="_blank"})
+    - [3.6.7) Statefullset](https://paulo-rogerio.github.io/kubernetes/statefullset){:target="_blank"})
     - [3.6.8) Jobs]()
     - [3.6.9) CronJobs]()
   - [3.7) Deployment maxSurge / maxUnavailable]()
-  - [3.8) Using Explain]()
+  - [3.8) Kubectl Explain]()
   - [3.9) Resources]()
     - [3.9.1) Limits (Hard) Vs Requests ( Soft )]()
     - [3.9.2) Liveness Probes]()
