@@ -33,7 +33,7 @@ Os namespaces do Kubernetes são partições lógicas em um cluster que fornecem
 
 #### 3) Criando Namespace
 
-#### [Aliases Kubectl](https://paulo-rogerio.github.io/kubernetes/aliases)
+#### [Aliases Kubectl](https://paulo-rogerio.github.io/kubernetes/aliases){:target="_blank"}
 
 Criando Namespace usando manifesto yaml
 
@@ -73,7 +73,7 @@ namespace "prgs" deleted
 
 Se eu não lembrar a sintexe do manifesto yaml para criar uma namespace?
 
-#### [Aliases Kubectl](https://paulo-rogerio.github.io/kubernetes/aliases)
+#### [Aliases Kubectl](https://paulo-rogerio.github.io/kubernetes/aliases){:target="_blank"}
 
 Gerar o yaml 
 
