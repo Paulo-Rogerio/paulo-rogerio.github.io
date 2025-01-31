@@ -86,9 +86,9 @@ deployment.apps/nginx scaled
 ```bash
 ➜  kind git:(main) kgp
 NAME                     READY   STATUS    RESTARTS   AGE
-nginx-5869d7778c-gwpcn   1/1     Running   0          2m49s
-nginx-5869d7778c-t89w9   1/1     Running   0          28s
-nginx-5869d7778c-z4vbz   1/1     Running   0          38s
+nginx-5869d7778c-gwpcn   3/3     Running   0          2m49s
+nginx-5869d7778c-t89w9   3/3     Running   0          28s
+nginx-5869d7778c-z4vbz   3/3     Running   0          38s
 ```
 
 Ao encerrar todos os Pods o replicaset fica zerado...

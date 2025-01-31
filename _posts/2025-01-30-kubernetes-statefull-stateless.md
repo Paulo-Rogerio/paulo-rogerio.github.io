@@ -2,7 +2,7 @@
 layout: post
 collection: kubernetes
 permalink: /kubernetes/statefull-stateless
-title:  "Kubernetes Deployment"
+title:  "Kubernetes Statefull Vs Stateless"
 author: Paulo Rogério
 date:   2025-01-30 15:00:13 -0300
 categories: [kubernetes]

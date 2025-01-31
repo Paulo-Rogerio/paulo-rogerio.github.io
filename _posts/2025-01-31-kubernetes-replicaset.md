@@ -17,7 +17,9 @@ published: true
 #### 1) Replicaset
 
 Vimos no conteúdo de **Deployments** que as réplicas são gerenciadas pelo **Replicaset**, que ao fazer um ***Rolling Update*** um novo **Replicaset** é criado. Na grande maioria dos casos o deployment ocorrerá da seguinte forma:
+
 - **Replicaset Old** ( Encerra um Pod ), a medida que o **Replicaset New** ( Cria um novo Pod ).
+
 - Existem outras formas que esse rolout ocorre, ex: canary que veremos logo logo.
 
 ![](/images/kubernetes/deployment-replicaset/deployment.png)
@@ -75,8 +77,9 @@ REVISION  CHANGE-CAUSE
 2         <none>
 ```
 
-Esse Replicaset **"nginx-5869d7778c"** representa a Revision **"1"**
-Esse Replicaset **"nginx-69bf56d45f"** representa a Revision **"2"**
+Esse Replicaset **"nginx-5869d7778c"** representa a Revision **"1"**.
+
+Esse Replicaset **"nginx-69bf56d45f"** representa a Revision **"2"**.
 
 Como fazer o Rollout?
 
@@ -96,7 +99,6 @@ nginx-69bf56d45f   0         0         0       12m
 
 ```bash
 ➜  kind git:(main) watch kubectl rollout status deployment/nginx
-deployment "nginx" successfully rolled out
 ```
 
 Caso tenha algum problemas com os Pod, pode-se reinicia-los...

@@ -13,7 +13,7 @@ published: true
 
 - [1) Conceito Pod](#1-conceito-pod)
 - [2) Tipos de Pod](#2-tipos-de-pod)
-- [3) Pods](#3)-pods)
+- [3) Pods](#3-pods)
 
 #### 1) Kubernetes Pod
 
