@@ -12,7 +12,8 @@ published: true
 ## 🚀 Kubernetes Replicaset
 
 - [1) Replicaset](#1-replicaset)
-- [2) Replicaset Mão na Massa](#2-replicaset-mão-na-massa)
+- [2) Como Replicaset Sabe Qual Pod Gerenciar?](#2-como-replicaset-sabe-qual-pod-gerenciar)
+- [3) Replicaset Mão na Massa](#3-replicaset-mão-na-massa)
 
 #### 1) Replicaset
 
@@ -24,8 +25,70 @@ Vimos no conteúdo de **Deployments** que as réplicas são gerenciadas pelo **R
 
 ![](/images/kubernetes/deployment-replicaset/deployment.png)
 
+#### 2) Como Replicaset Sabe Qual Pod Gerenciar?
 
-#### 2) Replicaset Mão na Massa
+As label tem o proposito de nortear o **replicaset** para que ele identifique qual **Pod** ele irá gerenciar. Ela tambem é usada para direcionar que um pod possa deployar em determinado worker. O objeto responsável por fazer esse match é o ***matchLabels***.
+
+Mostrar labels...
+
+```bash
+➜  kind git:(main) k get deployment --show-labels
+```
+
+Filtrando por label...
+
+```bash
+➜  kind git:(main) k get pod -l app=nginx
+```
+
+Exemplo manifesto yaml deployment...
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+    environment: development
+  name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - image: httpd
+        name: nginx
+```
+
+Labels válidas apenas no escopo de deployment e não para pods...
+
+```bash
+➜  kind git:(main) k get deployment --show-labels
+NAME          READY   UP-TO-DATE   AVAILABLE   AGE   LABELS
+nginx          1/1        1            1       27m   app=nginx,environment=development
+```
+
+Observer que no escopo dos Pods , essa label não é acessível...
+
+```bash
+➜  kind git:(main) k get pod --show-labels
+NAME                           READY   STATUS    RESTARTS   AGE   LABELS
+nginx-58d5f87bb5-pcznl   1/1     Running   0          20m   app=nginx,pod-template-hash=58d5f87bb5
+```
+
+Essas labels podem ser utilizadas nas condições de filtros...
+
+```bash
+➜  kind git:(main) k delete pod -n kube-system -l k8s-app=kube-dns
+```
+
+#### 3) Replicaset Mão na Massa
 
 ```bash
 ➜  kind git:(main) k create deployment --image=nginx --replicas=3 nginx
