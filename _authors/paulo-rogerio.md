@@ -15,8 +15,8 @@ Hello my name is Paulo Rogério, I'm an eternal student and passionate about Lin
 
 # Certificações
 
-<object data="/images/paulo-rogerio/LPIC-1.pdf" width="500" height="1000" type='application/pdf'></object>
+{% pdf "/images/paulo-rogerio/LPIC-1.pdf" width=200px height=180px %}
 
 # Curriculum Vitae
 
-<object data="/images/paulo-rogerio/PauloRogerioGomes.pdf" width="500" height="1000" type='application/pdf'></object>
+{% pdf "/images/paulo-rogerio/PauloRogerioGomes.pdf" width=200px height=180px %}
