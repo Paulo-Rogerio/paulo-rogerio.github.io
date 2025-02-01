@@ -57,7 +57,7 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-paginate
-  # - jekyll-pdf-embed
+  - jekyll-pdf-embed
 
 exclude: 
   - design_offline/
