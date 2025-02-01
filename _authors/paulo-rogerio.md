@@ -7,16 +7,9 @@ position: Owner
 
 ## 🚀 About me
 
-- [Certificações](#certificações)
-- [Curriculum Vitae](#curriculum-vitae)
+- [LPIC-1](https://docs.google.com/viewer?url=https://paulo-rogerio.github.io/images/paulo-rogerio/LPIC-1.pdf){:target="_blank"}
+- [Curriculum Vitae](https://docs.google.com/viewer?url=https://paulo-rogerio.github.io/images/paulo-rogerio/PauloRogerioGomes.pdf){:target="_blank"}
 
 
 Hello my name is Paulo Rogério, I'm an eternal student and passionate about Linux, Docker, Kubernetes, Python, Terraform and PostgreSQL. The purpose of this blog is to share knowledge and document operational procedures.
 
-# Certificações
-
-{% pdf "/images/paulo-rogerio/LPIC-1.pdf" width=200px height=180px %}
-
-# Curriculum Vitae
-
-{% pdf "/images/paulo-rogerio/PauloRogerioGomes.pdf" width=200px height=180px %}
