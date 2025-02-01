@@ -372,6 +372,8 @@ Executando Teste...
 
 Em outra aba execute um Pod temporáriamente para efetuar os testes.
 
+***Obs.: O service nginx que não possui nenhum IP retorna a consulta com todos os Hosts dos Pods gerenciados pelo Daemonset***
+
 ```bash
 ➜  kind git:(main) ✗ kubectl run -i --tty --image alpine dns-test --restart=Never --rm
 If you don't see a command prompt, try pressing enter.
@@ -380,12 +382,13 @@ If you don't see a command prompt, try pressing enter.
 / # apk add bind-tools
 / # host kubernetes
 kubernetes.default.svc.cluster.local has address 10.96.0.1
-
 / #
 / #
 / # host nginx
 nginx.default.svc.cluster.local has address 10.244.2.7
 nginx.default.svc.cluster.local has address 10.244.1.7
+nginx.default.svc.cluster.local has address 10.244.1.8
+nginx.default.svc.cluster.local has address 10.244.2.8
 / #
 / #
 / # host nginx-0.nginx.default.svc.cluster.local
@@ -396,77 +399,10 @@ nginx-0.nginx.default.svc.cluster.local has address 10.244.1.7
 nginx-1.nginx.default.svc.cluster.local has address 10.244.2.7
 / #
 / #
-/ # host nginx-0.nginx
-nginx-0.nginx.default.svc.cluster.local has address 10.244.1.7
+/ # host nginx-2.nginx.default.svc.cluster.local
+nginx-2.nginx.default.svc.cluster.local has address 10.244.1.8
 / #
 / #
-/ # host nginx-1.nginx
-nginx-1.nginx.default.svc.cluster.local has address 10.244.2.7
-/ #
-/ #
-/ # ping -c 1 nginx-0.nginx
-PING nginx-0.nginx (10.244.1.7): 56 data bytes
-64 bytes from 10.244.1.7: seq=0 ttl=63 time=0.130 ms
-/ #
-/ #
-/ # ping -c 1 nginx-1.nginx
-PING nginx-1.nginx (10.244.2.7): 56 data bytes
-64 bytes from 10.244.2.7: seq=0 ttl=62 time=0.329 ms
-/ #
-/ #
-/ # nslookup nginx-0.nginx
-Server:    10.96.0.10
-Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
-
-Name:      nginx-0.nginx
-Address 1: 10.244.1.19 nginx-0.nginx.default.svc.cluster.local
-/ #
-/ #
-/ # nslookup nginx-1.nginx
-Server:    10.96.0.10
-Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
-
-Name:      nginx-1.nginx
-Address 1: 10.244.2.14 nginx-1.nginx.default.svc.cluster.local
-/ #
-/ #
-/ # nslookup nginx-0.nginx
-Server:    10.96.0.10
-Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
-
-Name:      nginx-0.nginx
-Address 1: 10.244.1.9 nginx-0.nginx.default.svc.cluster.local
-/ #
-/ #
-/ # nslookup nginx-1.nginx
-Server:    10.96.0.10
-Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
-
-Name:      nginx-1.nginx
-Address 1: 10.244.2.10 nginx-1.nginx.default.svc.cluster.local
-/ #
-/ #
-/ # nslookup nginx-2.nginx
-Server:    10.96.0.10
-Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
-
-Name:      nginx-2.nginx
-Address 1: 10.244.1.10 nginx-2.nginx.default.svc.cluster.local
-/ #
-/ #
-/ # nslookup nginx-3.nginx
-Server:    10.96.0.10
-Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
-
-Name:      nginx-3.nginx
-Address 1: 10.244.2.11 nginx-3.nginx.default.svc.cluster.local
-
-/ #
-/ #
-/ # nslookup nginx-3.nginx.default.svc.cluster.local
-Server:    10.96.0.10
-Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
-
-Name:      nginx-3.nginx.default.svc.cluster.local
-Address 1: 10.244.2.11 nginx-3.nginx.default.svc.cluster.local
+/ # host nginx-3.nginx.default.svc.cluster.local
+nginx-3.nginx.default.svc.cluster.local has address 10.244.2.8
 ```
