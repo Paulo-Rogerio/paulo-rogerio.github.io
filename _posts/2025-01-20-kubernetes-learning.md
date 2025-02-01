@@ -36,7 +36,7 @@ published: true
     - [3.6.9) Daemonset](https://paulo-rogerio.github.io/kubernetes/daemonset){:target="_blank"}
     - [3.6.10) Statefullset](https://paulo-rogerio.github.io/kubernetes/statefullset){:target="_blank"}
     - [3.6.11) Jobs](https://paulo-rogerio.github.io/kubernetes/jobs){:target="_blank"}
-    - [3.6.12) CronJobs](https://paulo-rogerio.github.io/kubernetes/jobs){:target="_blank"}
+    - [3.6.12) CronJobs](https://paulo-rogerio.github.io/kubernetes/cronjobs){:target="_blank"}
   - [3.7) Kubectl Explain]()
   - [3.8) Resources]()
     - [3.8.1) Limits (Hard) Vs Requests ( Soft )]()
