@@ -20,14 +20,18 @@ published: true
 
 #### 1) Características Daemonset
 
-🔸 Daemonset não se define o número de replicas. 
-🔸 O Daemonset será igual ao número de nodes de um cluster. 
+🔸 Daemonset não se define o número de replicas.
+
+🔸 O Daemonset será igual ao número de nodes de um cluster.
+
 🔸 Um pod por cluster.
+
 🔸 O Daemonset não passa pelo kube-scheduler
 
 #### 2) Caso de Usos
 
 🔸 Coletor de Logs
+
 🔸 CNI
 
 Esses **Pods** rodam a nivel de host. Para Pods que gerenciam os logs geralmente é montado a pasta **/var/log** do host dentro do DaemonSet ( pod ).
@@ -35,6 +39,7 @@ Esses **Pods** rodam a nivel de host. Para Pods que gerenciam os logs geralmente
 #### 3) Como é escalado o Daemonset
 
 🔸 Daemonset não se define o número de replicas. 
+
 🔸 Daemonset não passa pelo kube-scheduler.
 
 Suponhamos que temos 2 worker
@@ -110,7 +115,7 @@ nodeSelector	<map[string]string>
 
 #### 6) Daemonset Mão na Massa
 
-Vamos gerar um manifesto dinamicamente com **kubectl create deployment**, substituindo o **Kind** e removendo a linha referente ao numero de replicas.
+Vamos gerar um manifesto dinamicamente com **kubectl create deployment**, substituindo o **Kind: Deployment** por **Kind: DaemonSet** e removendo a linha referente ao numero de **replicas**.
 
 ```bash
 ➜  kind git:(main) k neat <<< $(k create deployment --image=nginx nginx --dry-run=client -o yaml) | sed 's/kind: Deployment/kind: DaemonSet/;/replicas: 1/d' <<EOF | kaf -

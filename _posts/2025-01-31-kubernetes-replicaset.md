@@ -21,7 +21,7 @@ Vimos no conteúdo de **Deployments** que as réplicas são gerenciadas pelo **R
 
 - **Replicaset Old** ( Encerra um Pod ), a medida que o **Replicaset New** ( Cria um novo Pod ).
 
-- Existem outras formas que esse rolout ocorre, ex: canary que veremos logo logo.
+- Existem outras formas que esse rolout ocorra, ex: canary que veremos logo logo.
 
 ![](/images/kubernetes/deployment-replicaset/deployment.png)
 

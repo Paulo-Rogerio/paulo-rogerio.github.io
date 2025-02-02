@@ -26,7 +26,7 @@ published: true
 
 🔸 Quando um pod morre, o pvc garante que os dados ainda estaram lá.
 
-🔸 Os nomes sao sempre previsíveis, se meu deployment chama nginx, os nomes seriam: ( nginx-0, nginx-1 )
+🔸 Os nomes sao sempre previsíveis, se meu deployment chama nginx, os nomes seriam: **( nginx-0, nginx-1 )**
 
 🔸 Mesmo que o Pod **( nginx-2 )** morra, quando ele subir novamente, somente ele irá acessar esse dados.
 
@@ -349,7 +349,7 @@ nginx-html-nginx-3   Bound    pvc-344ea339-60cf-44e2-87bb-04e4892e2c23   1G     
 
 #### 6) Como funciona o DNS
 
-Por padrao a consulta de Stateful set nao é feita por IP , porque o service do tipo Cluster-IP está definido como "None", por isso nao tem IP definido.
+Por padrao a consulta de Stateful set nao é feita por **IP** , porque o service do tipo **Cluster-IP está definido como "None"**, por isso **NÃO** tem IP definido.
 
 ```bash
 ➜  kind git:(main) k get svc
@@ -372,7 +372,7 @@ Executando Teste...
 
 Em outra aba execute um Pod temporáriamente para efetuar os testes.
 
-***Obs.: O service nginx que não possui nenhum IP retorna a consulta com todos os Hosts dos Pods gerenciados pelo Daemonset***
+***Obs.: O service nginx que não possui nenhum IP, mas retorna a consulta com todos os Hosts dos Pods gerenciados pelo Daemonset***
 
 ```bash
 ➜  kind git:(main) ✗ kubectl run -i --tty --image alpine dns-test --restart=Never --rm

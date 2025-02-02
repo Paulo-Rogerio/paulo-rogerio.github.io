@@ -24,12 +24,12 @@ Por padrao o rollout sobe **25% dos pods novo ( nova release )** e a medida que 
 
 Suponhamos que queira personalizar esse rollout para que tenha a seguinte caracteística quando uma nova release entrar no ar:
 
-Imagine que temos um deployment configurado com 12 réplicas. Nesse cenário essa configuração garante que teria que subir 25% a mais, ou seja, eu teria 15 Pod rodando. E quando esses novos pods estirem health aí sim ele mataria 25% dos Pods do **Replicaset** antigo.
+Imagine que temos um deployment configurado com **12 réplicas**. Nesse cenário essa configuração garante que teria que subir **25% a mais**, ou seja, eu teria **15 Pod rodando**. E quando esses novos pods estirem health aí sim ele mataria **25% dos Pods do Replicaset** antigo.
 
 
 🔸 maxSurge: Numero máximo de pods que podem ser agendados para rollout acima do desejado, ou seja, se desejado e 100 essa opçao subiriria 125 pods, pode ser especificado em porcentagem.
 
-🔸 maxUnavailable: Numero de pods que podem ficar indisponiveis durant um rollout. Se definir para **0** , ele não derruba nenhum pod até que os novos fiquem realth.
+🔸 maxUnavailable: Numero de pods que podem ficar indisponiveis durant um rollout. **Se definid como 0** , ele não **derruba** nenhum pod até que os novos fiquoem health.
 
 #### Obs.: Definir maxUnavailable é uma boa estratégia em ambiente produtivo.
 

@@ -30,6 +30,6 @@ Em regras gerais quanto mais a aplicação **usa/depende** do sistema de arquivo
 
 🔸 **Deployment** responsável por gerenciar os **Replicaset**.
 
-🔸 **Statefullset** é gerido pelo kube-scheduler, tem os nomes do pods com um prefixo **ex: jenkins-0**. É um deployment controlado. Ele sempre segue a ordem de subir um e matar um Pod.  
+🔸 **Statefullset** é gerido pelo **kube-scheduler**, tem os nomes do pods com um prefixo **ex: jenkins-0**. É um deployment controlado. Ele sempre segue a ordem de subir um e matar um Pod.  
 
-🔸 **Daemonset** não se define o numero de replicas. O Daemonset será igual ao numero de nodes de um cluster. Daemonset não passa pelo kube-scheduler.
+🔸 **Daemonset** não se define o numero de replicas. O Daemonset será igual ao numero de nodes de um cluster. Daemonset não passa pelo **kube-scheduler**.
