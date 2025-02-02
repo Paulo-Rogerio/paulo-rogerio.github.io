@@ -27,11 +27,11 @@ published: true
   - [3.6) Workload Management]()
     - [3.6.1) Namespaces](https://paulo-rogerio.github.io/kubernetes/namespaces){:target="_blank"}
     - [3.6.2) Pod Init Containers](https://paulo-rogerio.github.io/kubernetes/pods){:target="_blank"}
-    - [3.6.3) Pod Lifecycle - Grace PeriodSeconds](https://paulo-rogerio.github.io/kubernetes/pod-lifecycle){:target="_blank"}
-    - [3.6.4) Statefullset x Stateless ](https://paulo-rogerio.github.io/kubernetes/statefull-stateless){:target="_blank"}
+    - [3.6.3) Pod Lifecycle](https://paulo-rogerio.github.io/kubernetes/pod-lifecycle){:target="_blank"}
+    - [3.6.4) Statefullset x Stateless](https://paulo-rogerio.github.io/kubernetes/statefull-stateless){:target="_blank"}
     - [3.6.5) Deployment](https://paulo-rogerio.github.io/kubernetes/deployment){:target="_blank"}
-    - [3.6.6) Deployment MaxSurge MaxUnavailable]()
-    - [3.6.7) PDB PodDisruptionBudget]()
+    - [3.6.6) Deployment MaxSurge MaxUnavailable](https://paulo-rogerio.github.io/kubernetes/deployment-maxsurge){:target="_blank"}
+    - [3.6.7) PDB PodDisruptionBudget](https://paulo-rogerio.github.io/kubernetes/pdb){:target="_blank"}
     - [3.6.8) Replicaset](https://paulo-rogerio.github.io/kubernetes/replicaset){:target="_blank"}
     - [3.6.9) Daemonset](https://paulo-rogerio.github.io/kubernetes/daemonset){:target="_blank"}
     - [3.6.10) Statefullset](https://paulo-rogerio.github.io/kubernetes/statefullset){:target="_blank"}
