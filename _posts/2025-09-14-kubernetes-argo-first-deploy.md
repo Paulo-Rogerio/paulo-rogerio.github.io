@@ -1,7 +1,7 @@
 ---
 layout: post
 collection: kubernetes
-permalink: /kubernetes/argocd-infraestrura
+permalink: /kubernetes/argocd-first-deploy
 title:  "Argocd First Deploy"
 author: Paulo Rogério
 date:   2025-09-14 22:00:00 -0300
