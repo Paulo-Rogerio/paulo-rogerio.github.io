@@ -13,12 +13,13 @@ published: true
 
 - [1) Bump Modules Terraform](#1-bump-modules-terraform)
 - [2) Repositórios](#2-repositórios)
-- [3) Deployment](#3-Deployment)
+- [3) Deploy](#3-deploy)
 - [4) Youtube Demo](#4-youtube-demo)
 
 #### 1) Bump Modules Terraform
 
-Foi refatorado os [Modules](https://gitlab.com/prgs-estudos/sre/cloud-infra/terraform-blueprints/blueprints), para que usem a ultima versão dos módulos oficias da **AWS**. 
+
+Foi refatorado os <a href="https://gitlab.com/prgs-estudos/sre/cloud-infra/terraform-blueprints/blueprints" target="_blank">Modules</a>, para que usem a ultima versão dos módulos oficias da **AWS**. 
 
 Juntamente com esse upgrade dos módulos, foi ajustado o **terragrunt** para que os **Node Groups** do Eks possa ser passado como parâmetro, isso permite gerenciar múltiplos node groups no mesmo cluster Kubernetes. 
 
@@ -91,9 +92,9 @@ Para esse estudos usando o **ArgoCD** iremos trabalhar com 2 repositórios:
 
 🔸 **Meus Cluster PostgreSQL** Cada repositório representará seu respectivo cluster **Postgres**, para esse estudo, teremos apenas o cluster **postgres-vault**.  
 
-[Operator](https://gitlab.com/prgs-estudos/dbre/cloudnative-pg/operator)
+<a href="https://gitlab.com/prgs-estudos/dbre/cloudnative-pg/operator" target="_blank">Operator</a>
 
-[Cluster - PostgreSQL Vault](https://gitlab.com/prgs-estudos/dbre/cloudnative-pg/postgres-vault)
+<a href="https://gitlab.com/prgs-estudos/dbre/cloudnative-pg/postgres-vault" target="_blank">Cluster - PostgreSQL Vault</a>
 
 O primeiro deploy que deve ser realizado é o operator, para isso clone o repositório e navegue até diretório **argocd-projects/plain-yaml**, aplique o manifesto.
 
@@ -101,12 +102,12 @@ O primeiro deploy que deve ser realizado é o operator, para isso clone o reposi
 kubectl apply -f .
 ```
 
-#### 3) Deployment
+#### 3) Deploy
 
 Existe várias forma de personalizar como o **ArgoCD** irá usar para manipular os yamls para atender um determinado **enviroment**, iremos atuar iniciamente com **kustomize** e futuramente com **helm**.
 
 Para testar o comportamento do kustomize, ou seja, para entender como que o kustomize irá manipular os manifestos yamls, execute os procedimentos abaixo.
-
+s
 **Obs.:** É necessário que tenha o **kustomize** instalado em seu host.
 
 Navegue no repositório **postgres-vault** no path **argocd-manifest/plain/overlays/production**, dentro desse diretório execute: 
