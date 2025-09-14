@@ -1,10 +1,10 @@
 ---
 layout: post
 collection: kubernetes
-permalink: /kubernetes/argocd-first-deploy
+permalink: /kubernetes/argocd-eks
 title:  "Argocd First Deploy"
 author: Paulo Rogério
-date:   2025-09-14 22:01:00 -0300
+date:   2025-09-14 10:49:00 -0300
 categories: [kubernetes]
 published: true
 ---
@@ -171,4 +171,5 @@ kubectl apply -f .
 
 Você pode acompanhar todo esse processo de implementação no link abaixo.
 
-[Demo](https://www.youtube.com/watch?v=dm9s3XLGzf8)
+
+<a href="https://www.youtube.com/watch?v=dm9s3XLGzf8" target="_blank">Demo</a>
