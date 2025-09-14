@@ -13,7 +13,7 @@ published: true
 
 - [1) Bump Modules Terraform](#1-bump-modules-terraform)
 - [2) Repositórios](#2-repositórios)
-- [3) Deploy](#3-Deploy)
+- [3) Deployment](#3-Deployment)
 - [4) Youtube Demo](#4-youtube-demo)
 
 #### 1) Bump Modules Terraform
@@ -101,7 +101,7 @@ O primeiro deploy que deve ser realizado é o operator, para isso clone o reposi
 kubectl apply -f .
 ```
 
-#### 3) Deploy
+#### 3) Deployment
 
 Existe várias forma de personalizar como o **ArgoCD** irá usar para manipular os yamls para atender um determinado **enviroment**, iremos atuar iniciamente com **kustomize** e futuramente com **helm**.
 
@@ -167,7 +167,7 @@ Navegue no repositório **postgres-vault** no path **argocd-maniargocd-projects/
 kubectl apply -f .
 ```
 
-#### 6) Youtube Demo
+#### 4) Youtube Demo
 
 Você pode acompanhar todo esse processo de implementação no link abaixo.
 
