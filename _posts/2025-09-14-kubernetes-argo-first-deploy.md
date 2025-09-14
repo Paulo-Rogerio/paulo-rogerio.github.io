@@ -4,7 +4,7 @@ collection: kubernetes
 permalink: /kubernetes/argocd-first-deploy
 title:  "Argocd First Deploy"
 author: Paulo Rogério
-date:   2025-09-14 22:00:00 -0300
+date:   2025-09-14 22:01:00 -0300
 categories: [kubernetes]
 published: true
 ---
