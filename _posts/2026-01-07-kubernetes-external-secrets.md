@@ -309,7 +309,7 @@ Cluster Name    vault-cluster-7ed3de58
 Cluster ID      6007cfa6-18ac-8784-70f7-f9f80ddfaa01
 HA Enabled      false
 Vault Selado: false
-Vault Token :  hvs.pANouo93Jc3WqgSepA81Krqy
+Vault Token :   xxxxxxxxxxxxxxxxxxxx
 WARNING! The VAULT_TOKEN environment variable is set! The value of this
 variable will take precedence; if this is unwanted please unset VAULT_TOKEN or
 update its value accordingly.
@@ -320,7 +320,7 @@ again. Future Vault requests will automatically use this token.
 
 Key                  Value
 ---                  -----
-token                hvs.pANouo93Jc3WqgSepA81Krqy
+token                ddddddddddddddddddddddddd
 token_accessor       2NDiQ0Co0iHPV8r1XGtUfRIe
 token_duration       ∞
 token_renewable      false
@@ -339,7 +339,7 @@ again. Future Vault requests will automatically use this token.
 
 Key                  Value
 ---                  -----
-token                hvs.pANouo93Jc3WqgSepA81Krqy
+token                ddddddddddddddddddddddddd
 token_accessor       2NDiQ0Co0iHPV8r1XGtUfRIe
 token_duration       ∞
 token_renewable      false
@@ -401,7 +401,7 @@ again. Future Vault requests will automatically use this token.
 
 Key                  Value
 ---                  -----
-token                hvs.pANouo93Jc3WqgSepA81Krqy
+token                cccccccccccccccccccccccc
 token_accessor       2NDiQ0Co0iHPV8r1XGtUfRIe
 token_duration       ∞
 token_renewable      false
@@ -420,7 +420,7 @@ again. Future Vault requests will automatically use this token.
 
 Key                  Value
 ---                  -----
-token                hvs.pANouo93Jc3WqgSepA81Krqy
+token                dddddddddddddddddddddddd
 token_accessor       2NDiQ0Co0iHPV8r1XGtUfRIe
 token_duration       ∞
 token_renewable      false
@@ -439,7 +439,7 @@ again. Future Vault requests will automatically use this token.
 
 Key                  Value
 ---                  -----
-token                hvs.pANouo93Jc3WqgSepA81Krqy
+token                dddddddddddddddddddddddd
 token_accessor       2NDiQ0Co0iHPV8r1XGtUfRIe
 token_duration       ∞
 token_renewable      false
@@ -474,7 +474,7 @@ again. Future Vault requests will automatically use this token.
 
 Key                  Value
 ---                  -----
-token                hvs.pANouo93Jc3WqgSepA81Krqy
+token                dddddddddddddddddddddddd
 token_accessor       2NDiQ0Co0iHPV8r1XGtUfRIe
 token_duration       ∞
 token_renewable      false
@@ -492,7 +492,7 @@ again. Future Vault requests will automatically use this token.
 
 Key                  Value
 ---                  -----
-token                hvs.CAESID3eFgFQBWsb9mO5a3ZmOq-nYOz03QQl9G2ofIkvrtCqGh4KHGh2cy5KTnFoRmJaZ0x6bTJtMERUTXRaUEpPeGY
+token                gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
 token_accessor       oIqMlYWJrG0ZeuKbLyvp9teF
 token_duration       8760h
 token_renewable      true
