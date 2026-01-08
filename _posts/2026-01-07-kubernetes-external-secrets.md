@@ -309,7 +309,7 @@ Cluster Name    vault-cluster-7ed3de58
 Cluster ID      6007cfa6-18ac-8784-70f7-f9f80ddfaa01
 HA Enabled      false
 Vault Selado:   false
- 
+Vault Token :   ******** 
 WARNING! The VAULT_TOKEN environment variable is set! The value of this
 variable will take precedence; if this is unwanted please unset VAULT_TOKEN or
 update its value accordingly.
