@@ -650,3 +650,9 @@ hello/hello	0.0.2-20260110-170530-main   	0.0.2-20260110-170530-main   	A Helm c
 Preciso voltar para essa TAG **0.0.2-20260110-170530-main** pois ela é pneultima e está correta.
 
 ![alt text](../../../../images/kubernetes/argocd-pipeline/argocd-pipeline-18.png "Deploy RollBack Azul")
+
+![alt text](../../../../images/kubernetes/argocd-pipeline/argocd-pipeline-19.png "Deploy RollBack Azul")
+
+![alt text](../../../../images/kubernetes/argocd-pipeline/argocd-pipeline-20.png "Deploy RollBack Azul")
+
+Rollback realizado com sucesso !!!
