@@ -23,7 +23,7 @@ published: true
 
 Projeto que contempla o aprendizado de pipelines usando **Gitlab**. O projeto foi dividido em vários **Repositórios**, simulando um ambiente produtivo.
 
-![alt text](../../../../images/kubernetes/argocd-pipeline/argocd-pipeline-01 "ArgoCD Projects")
+![alt text](../../../../images/kubernetes/argocd-pipeline/argocd-pipeline-01.png "ArgoCD Projects")
 
  
 | Repositóorio | Descrição |
