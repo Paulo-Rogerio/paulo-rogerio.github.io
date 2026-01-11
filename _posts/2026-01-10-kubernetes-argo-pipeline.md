@@ -18,6 +18,7 @@ published: true
 - [5) Configurando Ambiente para Pipeline](#5-configurando-ambiente-para-pipeline)
 - [6) Fluxo da Pipeline](#6-fluxo-da-pipeline)
 - [7) RollBack](#7-rollback)
+- [8) Youtube Demo](#8-youtube-demo)
 
 #### 1) Escopo do Projeto
 
@@ -74,6 +75,21 @@ Para esse laboratório vamos precisar das seguintes ferramentas:
 | **Helm** | Gerenciador de Pacotes para o Kubernetes |
 | **ArgoCD** | Gerenciar Deploys |
 | **MetalLB** | Expor IP para service do Type LoadBalancer |
+
+
+Outro detalhe ainda relacionados a pré-requisitos , são as **variáveis sensíveis**. Para esse Demo, meu projeto requer essas variáveis:
+
+
+| Variáveis | Descrição |
+| --- | --- |
+| **PIPELINE_DEPLOY_GIT_MAIL** | Email conhecido pelo git - Gerar Tag |
+| **PIPELINE_DEPLOY_GIT_NAME** | Usuario conhecido pelo git - Gerar Tag |
+| **PIPELINE_DEPLOY_TOKEN** | Token do Gitlab usado para gerenciar os artefatos helm ( Registry Package ) |
+| **PROJECT_ID** | Identificador do Projeto helm-charts para que helm saiba aonde deve levar os pacotes compilados |
+| **TLS_CRT** | Certificado gerado pelo letsencrypt |
+| **TLS_KEY** | Key do certificado gerado pelo letsencrypt |
+
+![alt text](../../../../images/kubernetes/argocd-pipeline/argocd-pipeline-21.png "Gitlab Variaveis")
 
 #### 4) Rodando Minha Aplicação Localmente
 
@@ -656,3 +672,9 @@ Preciso voltar para essa TAG **0.0.2-20260110-170530-main** pois ela é pneultim
 ![alt text](../../../../images/kubernetes/argocd-pipeline/argocd-pipeline-20.png "Deploy RollBack Azul")
 
 Rollback realizado com sucesso !!!
+
+#### 8) Youtube Demo
+
+Você pode acompanhar todo esse processo de implementação no link abaixo.
+
+<a href="https://youtu.be/xSY3V_JFGaw" target="_blank">Demo</a>
