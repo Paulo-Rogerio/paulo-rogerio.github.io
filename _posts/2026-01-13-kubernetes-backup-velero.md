@@ -266,9 +266,10 @@ Crie uma arquivo contendo informações usadas pelo deployment do velero. Altere
 
 O **minio** por padrão entrega **2 enpoints**, sendo um para manipular via **Web** , outro endpoint para usar o protocolo **S3**. Para esse lab estamos assumindo que os endpoints de acesso ao s3 são:
 
-|  | Web    | S3    |
-| :---:   | :---: | :---: |
-|  Endpoints | minio-vault.prgs-corp.xyz   | s3-minio-vault.prgs-corp.xyz   |
+
+**Endpoints Web:**  minio-vault.prgs-corp.xyz 
+
+**Endpoints S3:**  s3-minio-vault.prgs-corp.xyz
 
 
 ```bash
